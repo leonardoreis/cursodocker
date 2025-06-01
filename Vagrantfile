@@ -12,6 +12,9 @@ Vagrant.configure("2") do |config|
   config.vagrant.plugins = "vagrant-docker-compose"
   config.vm.provision :docker
   config.vm.provision :docker_compose
+  config.vm.synced_folder ".", "/home/vagrant/app", type: "virtualbox",
+  mount_options: ["dmode=775", "fmode=664"]
+
 
   config.vm.provider "virtualbox" do |vb|
     vb.customize ["modifyvm", :id, "--ioapic", "on"]

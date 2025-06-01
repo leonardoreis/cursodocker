@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 # Configuração do banco
 db_config = {
-    'host': 'aula4-db-1',  # nome do container Docker (ou 'localhost' se for local)
+    'host': 'app-db-1',  # nome do container Docker (ou 'localhost' se for local)
     'user': 'root',
     'password': 'root',
     'database': 'sistema'

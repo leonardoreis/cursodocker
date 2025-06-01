@@ -1,0 +1,16 @@
+GET http://localhost:8080/pedidos HTTP/1.1
+
+###
+
+GET http://localhost:8080/pedidos HTTP/1.1
+
+###
+
+POST http://localhost:8080/pedidos HTTP/1.1
+content-type: application/json
+
+{ 
+  "cliente_id": 3,
+  "produto_id": 2, 
+  "quantidade": 50
+}
