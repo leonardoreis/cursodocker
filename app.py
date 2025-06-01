@@ -11,8 +11,44 @@ db_config = {
     'database': 'sistema'
 }
 
+# Rota para listar pedidos
+@app.route('/clientes', methods=['GET'])
+def listar_clientes():
+    conn = mysql.connector.connect(**db_config)
+    cursor = conn.cursor(dictionary=True)
+
+    cursor.execute("""
+        SELECT * FROM cliente;
+    """)
+    clientes = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+
+    return jsonify(clientes), 200
+
+# Rota para cadastrar novo CLIENTE
+@app.route('/cliente', methods=['POST'])
+def cadastrar_cliente():
+    data = request.get_json()
+    nome = data['nome']
+
+    conn = mysql.connector.connect(**db_config)
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        INSERT INTO cliente (nome)
+        VALUES (%s)
+    """, (nome,))
+    conn.commit()
+
+    cursor.close()
+    conn.close()
+
+    return jsonify({'status': 'Cliente cadastrado com sucesso'}), 201
+
 # Rota para cadastrar novo pedido
-@app.route('/pedidos', methods=['POST'])
+@app.route('/pedido', methods=['POST'])
 def cadastrar_pedido():
     data = request.get_json()
     cliente_id = data['cliente_id']

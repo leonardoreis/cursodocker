@@ -1,16 +1,28 @@
+###
+#LISTA TODOS OS PEDIDOS
+
 GET http://localhost:8080/pedidos HTTP/1.1
 
 ###
+#LISTA TODOS OS CLIENTES
 
-GET http://localhost:8080/pedidos HTTP/1.1
+GET http://localhost:8080/clientes HTTP/1.1
 
 ###
-
-POST http://localhost:8080/pedidos HTTP/1.1
+#CADASTRA 1 PEDIDO
+POST http://localhost:8080/pedido HTTP/1.1
 content-type: application/json
 
 { 
   "cliente_id": 3,
   "produto_id": 2, 
-  "quantidade": 50
+  "quantidade": 13
+}
+###
+
+POST http://localhost:8080/cliente HTTP/1.1
+content-type: application/json
+
+{ 
+  "nome": "Clodoaldo"
 }
